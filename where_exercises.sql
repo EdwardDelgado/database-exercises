@@ -4,35 +4,57 @@ SELECT
   gender,
   first_name,
   last_name
-FROM
-  employees
+FROM employees
+WHERE first_name IN ('Irena', 'Vidya', 'Maya');
+
+SELECT
+   first_name,
+   last_name
+  FROM employees
+WHERE first_name = 'Irena' OR first_name = 'Vidya' OR first_name = 'Maya';
+
+SELECT
+   gender,
+   first_name,
+   last_name
+   FROM employees
 WHERE (first_name = 'Irena'
       OR first_name = 'Vidya'
-      OR first_name ='Maya')
-        AND gender = 'm';
-
-SELECT
-  last_name
-FROM
-  employees
-WHERE last_name LIKE 'e%' or last_name like '%e';
-
-SELECT
-  birth_date,
-  first_name,
-  last_name
-FROM employees
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-AND birth_date LIKE '%-12-25';
---   Alternate  LIKE '199%'
-
-SELECT
-  birth_date,
-  first_name
-FROM employees
-WHERE birth_date LIKE '%-12-25';
+      OR first_name = 'Maya')
+      AND gender = 'M';
 
 SELECT last_name
 FROM employees
+WHERE last_name LIKE 'e%';
+
+SELECT last_name
+        FROM employees
+WHERE last_name LIKE 'e%' OR last_name LIKE '%e';
+
+SELECT last_name
+        FROM employees
+WHERE last_name LIKE 'e%' AND last_name LIKE '%e';
+
+SELECT
+  hire_date,
+  first_name
+  hire_date,
+  first_name
+FROM employees
+WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+AND birth_date LIKE '%-12-25';
+
+SELECT
+   hire_date,
+   first_name
+  FROM employees
+  WHERE hire_date LIKE '199%';
+
+SELECT last_name
+FROM employees
+WHERE last_name LIKE '%q%';
+
+SELECT last_name
+        FROM employees
 WHERE last_name LIKE '%q%'
-      AND last_name NOT LIKE '%qu%';
+     AND last_name NOT LIKE '%qu%';
