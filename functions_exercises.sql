@@ -1,11 +1,11 @@
 USE employees;
 
 SELECT
-  first_name,
-  last_name
+  COUNT(*),
+  gender
 FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
-ORDER BY last_name, first_name;
+GROUP BY gender;
 
 SELECT
   first_name,
@@ -34,13 +34,14 @@ WHERE last_name LIKE 'e%' OR last_name LIKE '%e'
 ORDER BY emp_no DESC ;
 
 
-SELECT last_name
+SELECT concat(first_name, ' ', last_name)
 FROM employees
 WHERE last_name LIKE 'e%' AND last_name LIKE '%e'
 ORDER BY emp_no DESC ;
 
 
 SELECT
+  datediff(curdate(), hire_date),
   hire_date,
   first_name
 FROM employees
@@ -58,7 +59,12 @@ SELECT last_name
 FROM employees
 WHERE last_name LIKE '%q%';
 
-SELECT last_name
+SELECT
+  count(*),
+  first_name,
+  last_name
 FROM employees
 WHERE last_name LIKE '%q%'
-      AND last_name NOT LIKE '%qu%';
+      AND last_name NOT LIKE '%qu%'
+GROUP BY first_name, last_name
+ORDER BY count(*) DESC ;
